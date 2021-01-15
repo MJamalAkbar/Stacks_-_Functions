@@ -30,6 +30,15 @@ def double_operators(exp):
     return result
 
 
+def empty_paranthesis(exp):
+    result = True
+    for i in range(0, len(exp)):
+        if (exp[i] in ['(', '{', '[']) and (exp[i + 1] in [')', '}', ']']):
+            return False  # invalid
+
+    return result
+
+
 def Paranthesis(exp):
     stack1 = []
     for i in list_nbr:
@@ -65,6 +74,7 @@ first_opr = first_operator(list_nbr)
 last_opr = last_operator(list_nbr)
 double_word = double_operators(list_nbr)
 pranthesis = Paranthesis(list_nbr)
+empty_paran = empty_paranthesis(list_nbr)
 
 if first_opr is True:
     print("Invalid First operator")
@@ -74,5 +84,7 @@ elif double_word is False:
     print("Invalid Double Word")
 elif pranthesis is True:
     print("Invalid Paranthesis")
+elif empty_paran is False:
+    print("empty paranthesis")
 else:
     print("Valid Expresssion")
